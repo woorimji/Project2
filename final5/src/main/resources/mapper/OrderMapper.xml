@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="com.itbank.libook.service.dao.OrderDAO">
+
+<insert parameterType="orderVO" id="insertOrder">
+INSERT INTO pr3order VALUES (#{order_number}, #{member_num}, #{order_content},#{order_type}, #{order_info}, #{order_price}, #{order_point}, CURRENT_TIMESTAMP, #{used_point}, 0)
+ </insert>
+
+<delete id="deleteBasket">DELETE FROM pr3basket WHERE member_num = #{member_num} </delete>
+
+<update id="updateBookQrt">Update pr3book SET book_qry = book_qry - ${basket_qry} WHERE book_isbn = #{book_isbn} </update>
+
+<update id="updateMemberPoint">
+Update pr3member SET member_point = member_point - #{used_point} WHERE member_num = #{member_num}</update>
+
+<select id="getOneMember" resultType="memberVO">SELECT * FROM pr3member WHERE member_num = #{member_num} </select>
+
+<select id="findMaxQty" resultType="int">SELECT book_qry FROM pr3book WHERE book_isbn = #{book_isbn} </select>
+
+<delete parameterType="orderVO" id="deleteOrder">DELETE FROM pr3order WHERE order_number = #{order_number} </delete>
+
+<select id="getBookCategory" resultType="String">SELECT book_category FROM pr3book WHERE book_isbn = #{book_isbn} </select>
+
+<insert id="insert_imsi">INSERT INTO pr3imsi VALUES(#{order_number}, #{book_isbn}, #{book_category}, #{book_qry}) </insert>
+
+<select parameterType="orderVO" id="getOrder" resultType="imsiVO">SELECT * FROM pr3imsi WHERE order_number = #{order_number} </select>
+
+<update parameterType="imsiVO" id="plusQry">Update pr3book SET book_qry = book_qry +#{qty} WHERE book_isbn = #{book_isbn} </update>
+
+<!--  
+	################ 8월 31일 추가 ###############
+-->
+<update id="confirmPay" parameterType="orderVO">
+	UPDATE pr3order SET confirm_pay = 1 WHERE order_number = #{order_number}
+</update>
+<update id="updateMemberPoint2" parameterType="orderVO">
+Update pr3member SET member_point = member_point + #{order_point} WHERE member_num = #{member_num}</update>
+<!--  
+	################ 8월 31일 추가 ###############
+-->
+
+<!-- 우림 -->
+
+
+<select parameterType="memberVO" id="orderList" resultType="orderVO">SELECT * FROM PR3ORDER where member_num= #{member_num} </select>
+
+<select id="everyOrder" resultType="orderVO">SELECT * FROM PR3ORDER </select>
+
+<update parameterType="orderVO" id="orderChange">UPDATE PR3ORDER SET order_type = #{order_type} WHERE order_number = #{order_number} </update>
+
+<update id="updateOrderStatus">UPDATE pr3order SET order_type = CASE WHEN order_type = '배송전' and EXTRACT(MINUTE FROM (SYSDATE - order_time)) >= 1 THEN '배송중' WHEN order_type = '배송중' and EXTRACT(MINUTE FROM (SYSDATE - order_time)) >= 1 THEN '배송완료' ELSE order_type END 
+</update>
+
+</mapper>

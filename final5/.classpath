@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="target/classes" path="src/main/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry including="**/*.java" kind="src" path="src/main/resources"/>
+	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry including="**/*.java" kind="src" output="target/test-classes" path="src/test/resources"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11">
+		<attributes>
+			<attribute name="module" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v8.5">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.web"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/apachelib/commons-cli-1.5.0.jar"/>
+	<classpathentry kind="lib" path="D:/apachelib/httpclient5-5.2.1.jar"/>
+	<classpathentry kind="lib" path="D:/apachelib/httpclient5-cache-5.2.1.jar"/>
+	<classpathentry kind="lib" path="D:/apachelib/httpclient5-fluent-5.2.1.jar"/>
+	<classpathentry kind="lib" path="D:/apachelib/httpclient5-testing-5.2.1.jar"/>
+	<classpathentry kind="lib" path="D:/apachelib/httpclient5-win-5.2.1.jar"/>
+	<classpathentry kind="lib" path="D:/apachelib/httpcore5-5.2.jar"/>
+	<classpathentry kind="lib" path="D:/apachelib/httpcore5-h2-5.2.jar"/>
+	<classpathentry kind="lib" path="D:/apachelib/httpcore5-reactive-5.2.jar"/>
+	<classpathentry kind="lib" path="D:/apachelib/httpcore5-testing-5.2.jar"/>
+	<classpathentry kind="lib" path="D:/apachelib/jna-5.12.1.jar"/>
+	<classpathentry kind="lib" path="D:/apachelib/jna-platform-5.12.1.jar"/>
+	<classpathentry kind="lib" path="D:/apachelib/reactive-streams-1.0.4.jar"/>
+	<classpathentry kind="lib" path="D:/apachelib/rxjava-2.2.21.jar"/>
+	<classpathentry kind="lib" path="D:/apachelib/rxjava-3.1.5.jar"/>
+	<classpathentry kind="lib" path="D:/apachelib/slf4j-api-1.7.36.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itbank.libook.service.dao.BasketDAO">
+
+	<insert id="addBasket">
+		<!-- insert into pr3basket values (select member_num from pr3member where 
+			member_id=#{member_id}),#{book_isbn},1) -->
+
+		merge into pr3basket b
+		using (select #{member_num} as member_num, #{book_isbn} as
+		book_isbn, 1 as basket_qry
+		from dual) mt
+		on (b.book_isbn = mt.book_isbn
+		and b.member_num = mt.member_num)
+		when matched then
+		update set
+		b.basket_qry = b.basket_qry + 1
+		when not matched then
+		insert(member_num, book_isbn, basket_qry) values(mt.member_num,
+		mt.book_isbn,
+		mt.basket_qry)
+
+
+	</insert>
+
+	<select id="goBasket" resultType="basketVO" parameterType="memberVO">
+		<!-- select * from pr3basket where member_num=(select member_num from pr3member 
+			where member_id=#{member_id}) -->
+
+
+		select
+		m.member_name, b.book_name, b.book_price, bas.basket_qry,
+		(b.book_price*bas.basket_qry) as counted, bas.book_isbn, b.book_point
+		from pr3basket bas, pr3book b, pr3member m
+		where
+		bas.book_isbn=b.book_isbn
+		and bas.member_num=m.member_num
+		and
+		m.member_num=#{member_num}
+	</select>
+
+	<update id="addBasketQry">
+
+		update pr3basket bas
+		set basket_qry = basket_qry + 1
+		where exists (
+		select 1
+		from pr3book b
+		where b.book_isbn = bas.book_isbn
+		)
+		and bas.book_isbn = #{book_isbn}
+		and
+		bas.member_num = #{member_num}
+		and (bas.basket_qry + 1) &lt;= (
+		select book_qry
+		from pr3book
+		where book_isbn = #{book_isbn}
+		)
+	</update>
+
+	<update id="subsBasketQry">
+		update pr3basket bas
+		set basket_qry = basket_qry - 1
+		where exists (
+		select 1
+		from pr3book b
+		where b.book_isbn = bas.book_isbn
+		)
+		and bas.book_isbn = #{book_isbn}
+		and
+		bas.member_num = #{member_num}
+
+	</update>
+
+	<delete id="delBasketQry">
+		delete pr3basket
+		where book_isbn=#{book_isbn}
+		and
+		member_num=#{member_num}
+	</delete>
+
+	<delete id="clearBasket">
+		delete pr3basket
+		where member_num=#{member_num}
+	</delete>
+
+	<delete id="delSelectedRows">
+		delete pr3basket
+		where member_num=#{member_num}
+		and book_isbn=#{book_isbn}
+
+	</delete>
+</mapper>
+

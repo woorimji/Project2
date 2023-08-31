@@ -1,0 +1,44 @@
+@charset "EUC-KR";
+
+/*base*/
+*{margin:0; padding:0;}
+ul,li {margin:0; padding:0; list-style:none; float:left;}
+
+/*layout*/
+.backgroundDiv{width:100%; height:100%;}
+.innerDiv{width:45%; height:100%; margin:0 auto;}
+.titleDiv{width:100%; height:10%;}
+
+.mainDiv{width:100%; height:90%; /* background-color:orange; */}
+.fdDiv{width:100%; height:5%; position:relative;}
+.floorDiv{width:10%; height:100%; display:inline-block;
+   position:absolute; left:25px; top:0;}
+.dateDiv{width:30%; height:100%; display:inline-block;
+   position:absolute; left:95px;}
+
+.roomSelectDiv{width:100%; height:95%;/*  background-color:#00ffff; */}
+#line{width:100%; height:30%;/*  background-color:#696969; */}
+.line1{margin-top:15px;}
+.line2{margin-top:15px;}
+.line3{margin-top:15px;}
+
+#linecover{/* background-color:pink; */ width:700px; height:100%; margin:0 auto;
+   position:relative;}
+#roomLeft{width:40%; height:100%; /* background-color:red; */ display:inline-block;}
+#roomRight{width:40%; height:100%; /* background-color:#ffebcd; */ display:inline-block;
+   position:absolute; right:35px;}
+#img{width:280px; height:150px; /* background-color:silver; */}
+#text{width:77%; height:30%; /* background-color:yellow; */
+   margin-left:30px; text-align:center; display:inline-block; position:relative;
+   margin-top:5px;}
+.button{position:absolute; left:192px;; top:7px;}
+
+/*design*/
+h4{color:#06BBCC; padding-top:25px; padding-left:20px;}
+b{color:#06BBCC;}
+.selectBox{width:55px; height:25px;}
+.dateSelect{width:180px; height:25px;}
+img{width:100%; height:100%; object-fit:cover;}
+#button{width:55px; height:43px; background-color:#06BBCC; color:white; border:0;
+   border-radius:15px;
+   }

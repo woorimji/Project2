@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+
+<typeAliases>
+
+<typeAlias type="com.itbank.libook.vo.BookVO" alias="bookVO"/>
+
+<typeAlias type="com.itbank.libook.vo.BasketVO" alias="basketVO"/>
+
+<typeAlias type="com.itbank.libook.vo.BoardVO" alias="boardVO"/>
+
+<typeAlias type="com.itbank.libook.vo.OrderVO" alias="orderVO"/>
+
+<typeAlias type="com.itbank.libook.vo.CategoryVO" alias="categoryVO"/>
+
+<typeAlias type="com.itbank.libook.vo.MemberVO" alias="memberVO"/>
+
+<typeAlias type="com.itbank.libook.vo.PagingVO" alias="pagingVO"/>
+
+<typeAlias type="com.itbank.libook.vo.ImsiVO" alias="imsiVO"/>
+
+</typeAliases>
+
+</configuration>
