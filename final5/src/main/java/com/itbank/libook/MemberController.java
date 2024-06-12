@@ -366,6 +366,28 @@ public class MemberController {
 		return "user/login/setSnsInfo";
 	}
 	
+	// 카카오 로그인을 처리하는 컨트롤러 메서드
+	@RequestMapping(value = "/kakaoLoginPro.do", method = RequestMethod.GET)
+	public String kakaoLogin(@RequestParam("code") String code, HttpServletRequest request, HttpSession session) {
+	    // 1. 카카오에서 전달된 코드를 받아와서 처리합니다.
+	    
+	    // 2. 카카오로부터 받은 코드를 사용하여 액세스 토큰을 요청합니다.
+	    String accessToken = kakaoAuthService.getAccessToken(code);
+	    
+	    // 3. 액세스 토큰을 사용하여 사용자 정보를 가져옵니다.
+	    KakaoUserInfo userInfo = kakaoAuthService.getUserInfo(accessToken);
+	    
+	    // 4. 가져온 사용자 정보를 이용하여 로그인 처리를 수행합니다.
+	    // 이 부분은 회원가입 여부를 확인하고, 로그인 처리를 진행하는 로직입니다.
+	    
+	    // 5. 로그인에 성공했다면 세션에 사용자 정보를 저장합니다.
+	    session.setAttribute("userInfo", userInfo);
+	    
+	    // 6. 로그인 후에 사용자를 리다이렉트할 페이지로 이동합니다.
+	    return "redirect:/user/main"; // 로그인 후 메인 페이지로 이동
+	}
+
+	
 //	@RequestMapping(value = "/userid_duplicate_check", method = RequestMethod.POST)
 //	@ResponseBody
 //	public CommonData userid_duplicate_check(HttpServletRequest request, HttpServletResponse response, @RequestBody CommonData dto, Model model) throws Exception

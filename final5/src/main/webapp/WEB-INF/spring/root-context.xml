@@ -13,8 +13,8 @@
 			value="oracle.jdbc.driver.OracleDriver" />
 		<property name="url"
 			value="jdbc:oracle:thin:@127.0.0.1:1521:xe" />
-		<property name="username" value="hr" />
-		<property name="password" value="hr" />
+		<property name="username" value="c##hr" />
+		<property name="password" value="0000" />
 	</bean>
 
 	<!-- SqlSessionFactory -->
@@ -65,9 +65,9 @@
 
 		<property value="465" name="port" />
 
-		<property value="zz239966@naver.com" name="username" />
+		<property value="winnerji@naver.com" name="username" />
 
-		<property value="ejrfufwldo!003" name="password" />
+		<property value="wldnfla258!" name="password" />
 
 		<!-- 보안연결 ssl 설정 -->
 

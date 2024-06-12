@@ -6,8 +6,10 @@
 <mapper namespace="com.itbank.libook.service.dao.OrderDAO">
 
 <insert parameterType="orderVO" id="insertOrder">
-INSERT INTO pr3order VALUES (#{order_number}, #{member_num}, #{order_content},#{order_type}, #{order_info}, #{order_price}, #{order_point}, CURRENT_TIMESTAMP, #{used_point}, 0)
- </insert>
+    INSERT INTO pr3order (ORDER_NUMBER, MEMBER_NUM, ORDER_CONTENT, ORDER_TYPE, ORDER_INFO, ORDER_PRICE, ORDER_POINT, ORDER_TIME, USED_POINT)
+    VALUES (#{order_number}, #{member_num}, #{order_content}, #{order_type}, #{order_info}, #{order_price}, #{order_point}, CURRENT_TIMESTAMP, #{used_point})
+</insert>
+
 
 <delete id="deleteBasket">DELETE FROM pr3basket WHERE member_num = #{member_num} </delete>
 
